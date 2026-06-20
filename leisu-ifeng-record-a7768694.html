@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>雷速 · 稳定内容入口说明页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #fbe9d7 0%, #fad6c5 45%, #f0ccb8 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.7;
+            color: #3d2c1e;
+            background-attachment: fixed;
+        }
+
+        .card {
+            max-width: 780px;
+            width: 100%;
+            background: rgba(255, 252, 246, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 40px 40px 36px 36px;
+            padding: 2.5rem 2.2rem 3rem;
+            box-shadow: 0 18px 36px -12px rgba(90, 55, 30, 0.32),
+                        0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255, 235, 215, 0.7);
+            transition: box-shadow 0.2s ease;
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            .card {
+                padding: 1.8rem 1.4rem 2.2rem;
+                border-radius: 28px;
+            }
+        }
+
+        .opening {
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: #7b4e2d;
+            margin-bottom: 0.3rem;
+            border-left: 4px solid #d9a77a;
+            padding-left: 1rem;
+        }
+
+        .opening small {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #a07a5c;
+            display: block;
+            margin-top: 0.1rem;
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #4f321f;
+            margin: 0.5rem 0 0.3rem 0;
+            letter-spacing: -0.3px;
+            line-height: 1.25;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #b16d42, #8f5b37);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 650;
+        }
+
+        .intro-paragraph {
+            margin: 1.4rem 0 1.6rem;
+            font-size: 1rem;
+            color: #4b3827;
+        }
+
+        .intro-paragraph a {
+            font-weight: 600;
+            color: #a1663b;
+            text-decoration: none;
+            border-bottom: 2px solid #e3c3a9;
+            transition: border-color 0.15s, color 0.2s;
+            padding-bottom: 1px;
+        }
+
+        .intro-paragraph a:hover {
+            border-bottom-color: #a1663b;
+            color: #7a4c2c;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1rem;
+            margin: 1.8rem 0 1.2rem;
+        }
+
+        .feature-item {
+            flex: 1 1 200px;
+            background: #f7ede3;
+            border-radius: 60px 16px 16px 60px;
+            padding: 0.7rem 1rem 0.7rem 1.8rem;
+            font-size: 0.98rem;
+            border: 1px solid #e6d2bd;
+            box-shadow: inset 0 1px 2px rgba(255, 240, 225, 0.6);
+            color: #3f2f1f;
+            list-style: none;
+        }
+
+        .feature-item strong {
+            display: inline-block;
+            background: #dbb99b;
+            color: #2f1f12;
+            font-weight: 600;
+            padding: 0 6px;
+            border-radius: 30px;
+            margin-right: 6px;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .bridge-text {
+            margin: 1.8rem 0 1.2rem;
+            padding: 0.8rem 1.2rem;
+            background: #fcf3ea;
+            border-radius: 40px 12px 40px 12px;
+            border-left: 3px solid #dbb28e;
+            font-size: 0.96rem;
+        }
+
+        .bridge-text a {
+            color: #a1663b;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1.5px dotted #c9a787;
+        }
+
+        .bridge-text a:hover {
+            border-bottom-style: solid;
+            color: #6e442b;
+        }
+
+        .scene-block {
+            background: #f6ede3;
+            border-radius: 24px;
+            padding: 1.2rem 1.4rem;
+            margin: 1.4rem 0 1rem;
+            border: 1px solid #e6cfba;
+            box-shadow: 0 2px 8px rgba(100, 65, 35, 0.04);
+        }
+
+        .scene-block p {
+            margin-bottom: 0.2rem;
+        }
+
+        .scene-block .label {
+            display: inline-block;
+            background: #ba8b68;
+            color: #faf1e7;
+            padding: 0.1rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .closing-note {
+            display: inline-block;
+            margin-top: 1.8rem;
+            background: #e5d3c1;
+            padding: 0.6rem 1.8rem;
+            border-radius: 60px;
+            color: #3b2a1b;
+            font-size: 0.95rem;
+            border: 1px solid #cdb59e;
+            box-shadow: 0 2px 4px rgba(60, 35, 15, 0.06);
+        }
+
+        .closing-note a {
+            color: #6e442b;
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 2px solid #b38766;
+        }
+
+        .closing-note a:hover {
+            background: #b38766;
+            color: #fcf3e9;
+            border-bottom-color: transparent;
+            padding: 0 3px;
+            border-radius: 20px;
+        }
+
+        .footnote {
+            margin-top: 2.4rem;
+            font-size: 0.82rem;
+            color: #836a53;
+            text-align: center;
+            border-top: 1px solid #e8d6c5;
+            padding-top: 1.5rem;
+            letter-spacing: 0.2px;
+        }
+
+        .footnote span {
+            opacity: 0.65;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="opening">
+        一段开端
+        <small>—— 入口，是连贯的开始</small>
+    </div>
+
+    <h1><span>雷速</span> · 内容与浏览的稳定落脚点</h1>
+
+    <div class="intro-paragraph">
+        当你在网络里翻阅资讯、对比信息时，一个干净、不偏移的入口比什么都重要。
+        <a href="https://leisu-ifeng.com">雷速</a> 所承载的，正是这样一处保持一贯节奏的页面集合——没有突然的跳转，也没有多余的干扰，你从哪个段落进入，就能从哪个位置继续。
+    </div>
+
+    <!-- 特点列表：以卡片形式呈现 -->
+    <div class="feature-grid">
+        <div class="feature-item"><strong>📌 稳定</strong> 长期维护的入口结构</div>
+        <div class="feature-item"><strong>🧭 清晰</strong> 内容分区一目了然</div>
+        <div class="feature-item"><strong>⚙️ 轻量</strong> 不堆积无关模块</div>
+        <div class="feature-item"><strong>🌿 节制</strong> 信息呈现有所取舍</div>
+    </div>
+
+    <div class="bridge-text">
+        ⏺ 从浏览体验上说，一个可靠的起始页能节省大量重新定位的时间。
+        无论是快速检索过往内容，还是固定某个常用分区，<a href="https://leisu-ifeng.com">雷速</a> 的页面结构都倾向于减少视觉噪音——把注意力还给内容本身。
+    </div>
+
+    <!-- 场景摘要 -->
+    <div class="scene-block">
+        <span class="label">常见使用场景</span>
+        <p>· 日常内容浏览，希望从一个固定页面展开，不丢失上下文。</p>
+        <p>· 需要对比多个条目或文章时，稳定的列表布局能降低反复翻找的疲劳。</p>
+        <p>· 作为书签或起始页，每次打开都是同一套熟悉的信息框架，无需重新适应。</p>
+    </div>
+
+    <!-- 温和结尾 + 嵌入链接 -->
+    <div class="closing-note">
+        → 如果你想了解更多，可以从 <a href="https://leisu-ifeng.com">雷速</a> 开始，慢慢翻看。
+    </div>
+
+    <div class="footnote">
+        <span>页面结构 · 一段承述 · 2025</span>
+    </div>
+</div>
+</body>
+</html>
