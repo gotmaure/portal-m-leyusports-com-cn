@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>V体育 · 信息索引与资料整理平台</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f1f7f7;
+      color: #1e2b2c;
+      line-height: 1.6;
+      padding: 0 16px 48px;
+    }
+    a {
+      color: #0b6f6f;
+      text-decoration: none;
+      font-weight: 500;
+      transition: border-bottom 0.15s;
+    }
+    a:hover { border-bottom: 2px solid #0b6f6f; }
+
+    /* 导航 */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0 12px;
+      border-bottom: 1px solid #c7dbdb;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 8px 0;
+    }
+    .nav-logo {
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+      color: #0a5c5c;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: #1e4f4f;
+      font-weight: 400;
+      padding: 2px 0;
+    }
+    .nav-links a:hover { color: #063d3d; border-bottom-color: #063d3d; }
+
+    /* hero 区域 */
+    .hero {
+      margin: 20px 0 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #0f3d3d;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      max-width: 700px;
+      font-size: 1.05rem;
+      color: #2d4b4b;
+    }
+
+    /* 网格卡片系统 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin: 32px 0 28px;
+    }
+    @media (min-width: 600px) {
+      .grid-cards { grid-template-columns: repeat(3, 1fr); }
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 22px 20px 24px;
+      box-shadow: 0 4px 10px rgba(8, 60, 60, 0.04);
+      border: 1px solid #d2e4e4;
+      transition: transform 0.1s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 18px rgba(8, 60, 60, 0.08);
+      border-color: #aecfcf;
+    }
+    .card-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+      margin-bottom: 10px;
+      color: #0d7d7d;
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #103838;
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #2a4b4b;
+      flex: 1;
+    }
+    .card .tag {
+      display: inline-block;
+      margin-top: 14px;
+      background: #e5f2f2;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      color: #0d5f5f;
+      align-self: flex-start;
+      letter-spacing: 0.3px;
+    }
+
+    /* 常见说明 / 摘要 */
+    .faq-summary {
+      background: #f6fcfc;
+      border-radius: 20px;
+      padding: 24px 22px;
+      margin: 32px 0 28px;
+      border: 1px solid #cde0e0;
+    }
+    .faq-summary h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #0b5252;
+      margin-bottom: 16px;
+    }
+    .faq-item {
+      margin-bottom: 14px;
+    }
+    .faq-item strong {
+      color: #0d5c5c;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .faq-item p {
+      color: #2b4f4f;
+      font-size: 0.95rem;
+    }
+    .faq-item:last-child { margin-bottom: 0; }
+
+    /* 引用/索引提示 */
+    .ref-note {
+      background: #eef6f6;
+      padding: 16px 20px;
+      border-radius: 60px;
+      font-size: 0.95rem;
+      color: #1b4b4b;
+      display: inline-block;
+      border: 1px solid #bfd9d9;
+      margin-bottom: 20px;
+    }
+    .ref-note span {
+      font-weight: 500;
+      color: #085353;
+    }
+
+    /* 页脚 */
+    .footer {
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid #c7dbdb;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: #507070;
+    }
+    .footer small { opacity: 0.75; }
+
+    /* 移动端微调 */
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.7rem; }
+      .nav-links { gap: 12px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 轻量导航 -->
+  <nav class="nav">
+    <div class="nav-logo">📄 V体育·索引</div>
+    <div class="nav-links">
+      <a href="#info">资料</a>
+      <a href="#scene">场景</a>
+      <a href="#faq">说明</a>
+      <a href="#ref">索引</a>
+    </div>
+  </nav>
+
+  <!-- 核心介绍 -->
+  <header class="hero">
+    <h1>资料整理 · 信息索引</h1>
+    <p>围绕 <a href="https://chn-vtiyu.com">V体育</a> 建立的内容聚合与分类梳理，聚焦结构化的信息获取方式。从原始资料中提炼模块线索，降低信息过载，提升查阅效率。</p>
+  </header>
+
+  <!-- 三个场景模块（网格卡片） -->
+  <div class="grid-cards" id="scene">
+    <!-- 卡片 1：赛事资料整理 -->
+    <div class="card">
+      <div class="card-icon">🏷️</div>
+      <h3>赛事资料梳理</h3>
+      <p>对主流赛事的基础信息、赛制变化与历史记录进行结构化整理，形成可检索的轻量档案。减少重复查找，辅助快速建立认知框架。</p>
+      <span class="tag">结构化 · 档案</span>
+    </div>
+    <!-- 卡片 2：动态索引 -->
+    <div class="card">
+      <div class="card-icon">📌</div>
+      <h3>动态信息索引</h3>
+      <p>围绕赛事周期、实时数据与公共讨论，建立动态更新的索引节点。帮助定位关键信息源，适用于需要持续关注的内容场景。</p>
+      <span class="tag">索引 · 更新</span>
+    </div>
+    <!-- 卡片 3：主题聚合 -->
+    <div class="card">
+      <div class="card-icon">🔗</div>
+      <h3>主题聚合页</h3>
+      <p>针对特定项目、赛季或事件，将分散的报道、数据与背景资料汇总为专题页面。提供从概览到细节的递进式信息路径。</p>
+      <span class="tag">专题 · 汇总</span>
+    </div>
+  </div>
+
+  <!-- 常见说明（FAQ 摘要） -->
+  <div class="faq-summary" id="faq">
+    <h2>常见说明</h2>
+    <div class="faq-item">
+      <strong>本平台的信息组织方式？</strong>
+      <p>资料以整理与索引为主，所有条目均标注来源类别。我们不做主观预测，只提供清晰的索引结构，使用者可自行判断内容适用性。</p>
+    </div>
+    <div class="faq-item">
+      <strong>如何理解「索引」与原始资料的关系？</strong>
+      <p>索引仅作为导航线索，帮助你快速定位原始内容。建议结合 <a href="https://chn-vtiyu.com">V体育</a> 中的一手资料交叉印证，以保持信息完整性。</p>
+    </div>
+    <div class="faq-item">
+      <strong>内容更新频率如何？</strong>
+      <p>主要模块随赛季周期与重大节点进行阶段性更新。动态索引部分会根据公共信息流向做适度调整，不设定固定刷新周期。</p>
+    </div>
+  </div>
+
+  <!-- 索引提示 / 引用说明 -->
+  <div class="ref-note" id="ref">
+    <span>📑 当前索引种子：bed077e3af18613d</span>（仅供内部版本对照，不对外展示）
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <p>资料整理平台 · 基于 <a href="https://chn-vtiyu.com">V体育</a> 的信息索引</p>
+    <small>内容仅供学习与参考，不构成任何建议或承诺。请以官方渠道发布信息为准。</small>
+    <small>© 2025 · 索引页面 · 版本标识 v1.0</small>
+  </footer>
+
+</body>
+</html>
